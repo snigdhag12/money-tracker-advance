@@ -18,11 +18,11 @@ h1 {
   text-align: center;
   color: #fff;
   margin: 0;
-  font-size: 10rem;
+  font-size: 5rem;
 }
 
 h1 span{
-  font-size: 5rem;
+  font-size: 2.5rem;
   vertical-align: bottom;
   display: inline-block;
 }
@@ -39,7 +39,7 @@ form input {
   padding: 2px 5px;
   border-radius: 5px;
   margin-top: 5px;
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 
 form div.basic {
@@ -58,18 +58,17 @@ form button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   color: #e14478;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 div.transactions {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 div.transaction{
   display: flex;
   padding: 5px 0;
   justify-content: space-between;
-  border-top: 1px solid #30313d;
 }
 
 div.transaction:first-child{
@@ -77,21 +76,21 @@ div.transaction:first-child{
 }
 
 div.transaction div.name {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+  color: #ddd;
 }
 
 div.transaction div.description{
-  font-size: 2rem;
+  font-size: 1rem;
   color: #888;
 }
 
 div.transaction div.price{
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 div.transaction div.datetime{
-  margin-top: 6px;
-  font-size: 2rem;
+  font-size: 1rem !important;
   color: #888;
 }
 
@@ -108,7 +107,7 @@ div.price.red{
 }
 
 div.transaction div.datetime{
-  font-size: 1.5rem;
+  font-size: 0.75rem;
   columns: #888;
 }
 
@@ -129,9 +128,30 @@ input {
   margin-top: 30px;
   border-radius: 5px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-  font-size: 3rem;
+  font-size: 1.5rem;
   text-align: center;
   font-weight: 600;
+}
+
+.col-header {
+  background-color: transparent !important; 
+  font-size: 2rem; 
+  color: #ddd;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.MuiDataGrid-root {
+  border-bottom: none !important;
+  --DataGrid-containerBackground: #e14478 !important;
+}
+
+.MuiTablePagination-root, .MuiDataGrid-footerContainer {
+  color: #ddd !important;
+  font-size: 1rem !important;
+}
+
+.css-i4bv87-MuiSvgIcon-root, .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+  fill: #ddd !important;
 }
 
 
@@ -143,15 +163,15 @@ input {
   }
 
   h1 {
-    font-size: 5rem;
-  }
-
-  h1 span {
     font-size: 2.5rem;
   }
 
-  form input {
+  h1 span {
     font-size: 2rem;
+  }
+
+  form input {
+    font-size: 1rem;
   }
 
   form div.basic {
@@ -160,18 +180,18 @@ input {
 
   form button {
     width: 100%;
-    font-size: 2rem;
+    font-size: 1rem;
     margin: 0 auto;
   }
 
   div.transaction div.name,
   div.transaction div.price {
-    font-size: 2.25rem;
+    font-size: 1.25rem;
   }
 
   div.transaction div.description,
   div.transaction div.datetime {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 }
 
@@ -183,15 +203,15 @@ input {
   }
 
   h1 {
-    font-size: 4rem;
-  }
-
-  h1 span {
     font-size: 2rem;
   }
 
+  h1 span {
+    font-size: 1rem;
+  }
+
   form input {
-    font-size: 1.5rem;
+    font-size: 0.75rem;
   }
 
   form div.basic {
@@ -200,16 +220,16 @@ input {
 
   form button {
     width: 60%;
-    font-size: 1.5rem;
+    font-size: 0.75rem;
   }
 
   div.transaction div.name,
   div.transaction div.price {
-    font-size: 1.5rem;
+    font-size: 0.75rem;
   }
 
   div.transaction div.description,
   div.transaction div.datetime {
-    font-size: 1.2rem;
+    font-size: 0.6rem;
   }
 }
