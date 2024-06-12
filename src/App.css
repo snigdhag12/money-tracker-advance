@@ -154,6 +154,10 @@ input {
   fill: #ddd !important;
 }
 
+.MuiDialogContent-root input {
+  color: black !important;
+}
+
 
 /* Mobile Styles */
 @media (max-width: 768px) and (orientation: portrait){

@@ -35,6 +35,39 @@ app.get('/api/transactions', async (req, res, next) => {
     }
 });
 
+app.delete('/api/transaction/:id', async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        const result = await Transaction.findByIdAndDelete(id);
+        if (result) {
+            res.json({ message: 'Transaction deleted successfully' });
+        } else {
+            res.status(404).json({ error: 'Transaction not found' });
+        }
+    } catch (error) {
+        next(error); 
+    }
+});
+
+app.put('/api/transaction/:id', async (req, res, next) => {
+    const { id } = req.params;
+    const updatedTransactionData = req.body;
+  
+    try {
+      await mongoose.connect(process.env.MONGO_URL);
+      const updatedTransaction = await Transaction.findByIdAndUpdate(id, updatedTransactionData, { new: true });
+  
+      if (updatedTransaction) {
+        res.json({ message: 'Transaction updated successfully', updatedTransaction });
+      } else {
+        res.status(404).json({ error: 'Transaction not found' });
+      }
+    } catch (error) {
+      next(error);
+    }
+  });
+  
 app.listen(4000, () => {
     console.log('Server is running on port 4000');
 });
