@@ -1,0 +1,22 @@
+.dialog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+  
+.dialog-content-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.dialog-button {
+    border-color: #e14478 !important;
+    color: #e14478 !important;
+}
+
+.css-knqc4i-MuiDialogActions-root {
+    display: flex;
+    justify-content: center !important;
+}
+  
+  

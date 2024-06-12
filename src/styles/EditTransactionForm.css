@@ -1,0 +1,30 @@
+.dialog-title {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  .form-container {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .form-input {
+    font-size: 1rem;
+    border-color: #e14478;
+    border-width: 1px;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .submit-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .submit-button {
+    border-color: #e14478;
+    color: #e14478;
+  }
+  
