@@ -6,6 +6,7 @@ const TransactionSchema = new Schema({
     price: {type: Number, required:true},
     description: {type: String},
     datetime: {type: Date, required: true},
+    categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }]
 });
 
 const TransactionModel = model('Transaction', TransactionSchema);

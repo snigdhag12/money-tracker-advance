@@ -1,14 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect , useState } from 'react';
+import { WithContext as ReactTags } from 'react-tag-input';
+import '../styles/TransactionForm.css';
 
 const TransactionForm = ({ setErrorMessage }) => {
   const [name, setName] = useState('');
   const [datetime, setDatetime] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
+  const [categories, setCategories] = useState([]); 
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch(process.env.REACT_APP_API_URL + 'categories');
+      if (!response.ok) {
+        throw new Error('Failed to fetch categories');
+      }
+      
+      const data = await response.json();
+      //console.log(data);
+      setCategories(data.map(category => ({ id: category._id, text: category.text })));
+    } catch (error) {
+      console.error('Error fetching categories:', error.message);
+      setErrorMessage('Failed to fetch categories. Please try again later.');
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   function addNewTransaction(ev){
-    //console.log("add new called");
+    console.log(selectedCategories, "catergories array");
     ev.preventDefault();
+    
+    const temp =  selectedCategories.map(category => category.text);
+    console.log(temp);
 
     const url = process.env.REACT_APP_API_URL + 'transaction';
 
@@ -19,7 +46,8 @@ const TransactionForm = ({ setErrorMessage }) => {
         name: name, 
         price,
         description, 
-        datetime})
+        datetime,
+        categories: selectedCategories.map(category => category.text) })
     }).then(response => {
       if (!response.ok) {
         throw new Error('Failed to add transaction');
@@ -32,6 +60,7 @@ const TransactionForm = ({ setErrorMessage }) => {
       setDatetime('');
       setDescription('');
       setErrorMessage('');
+      setSelectedCategories([]);
 
       setTimeout(() => {
         window.location.reload();
@@ -42,6 +71,15 @@ const TransactionForm = ({ setErrorMessage }) => {
       setErrorMessage('Failed to add transaction. Please try again later.');
     });
   }
+
+  const handleDelete = (i) => {
+    const updatedCategories = selectedCategories.slice(0, i).concat(selectedCategories.slice(i + 1));
+    setSelectedCategories(updatedCategories);
+  };
+
+  const handleAddition = (category) => {
+    setSelectedCategories([...selectedCategories, category]);
+  };
 
   return (
     <form onSubmit={addNewTransaction}>
@@ -73,6 +111,17 @@ const TransactionForm = ({ setErrorMessage }) => {
         value={description}
         onChange={ev => setDescription(ev.target.value)} 
         placeholder={'Additional Description'}/>
+        <ReactTags
+          tags={selectedCategories}
+          suggestions={categories}
+          handleDelete={handleDelete}
+          handleAddition={handleAddition}
+          allowNew
+          placeholder="Press Enter to Add category"
+          editable
+          maxTags={4}
+          inputFieldPosition="top"
+        />
         </div>
         <div className='button-class'>
         <button type="submit">

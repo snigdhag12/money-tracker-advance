@@ -1,0 +1,107 @@
+   .ReactTags__tags {
+    position: relative;
+  }
+  
+  .ReactTags__clearAll {
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    background: #f88d8d;
+    color: #fff;
+    border: none;
+  }
+  
+  .ReactTags__tagInput {
+    border-radius: 2px;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .ReactTags__editInput {
+    border-radius: 1px;
+  }
+  
+  .ReactTags__editTagInput {
+    display: inline-flex;
+  }
+  
+  .ReactTags__selected {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ReactTags__selected span.ReactTags__tag  {
+    border: 1px solid #ddd;
+    background: #e14478;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px;
+    margin: 5px 5px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    height: 25px;
+}
+  
+  .ReactTags__selected .ReactTags__remove {
+    color: #aaa;
+    cursor: pointer;
+    display: flex;
+  }
+  
+  .ReactTags__suggestions {
+    position: absolute;
+  }
+  
+  .ReactTags__suggestions ul {
+    list-style-type: none;
+    box-shadow: 0.05em 0.01em 0.5em rgba(0, 0, 0, 0.2);
+    background: white;
+    width: 200px;
+    padding: 5px 0;
+  }
+  
+  .ReactTags__suggestions li {
+    padding: 5px 10px;
+    margin: 0;
+    text-align: left;
+  }
+  
+  .ReactTags__suggestions li mark {
+    text-decoration: underline;
+    background: none;
+  }
+  
+  .ReactTags__suggestions li.ReactTags__activeSuggestion {
+    background: #4dabf7;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .ReactTags__suggestions li.ReactTags__activeSuggestion span mark {
+    color: #fff;
+  }
+  
+  .ReactTags__remove {
+    background: none;
+    margin: 2px auto 0 !important;
+  }
+  
+  .ReactTags__error {
+    color: #e03131;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ReactTags__error svg {
+    padding: 0 5px;
+  }
+
+  .edit-form .ReactTags__tagInputField {
+    font-size: 1rem;
+    border: 1px solid #e14478;
+  }
+  

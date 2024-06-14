@@ -24,7 +24,10 @@
   }
   
   .submit-button {
-    border-color: #e14478;
-    color: #e14478;
+    border-color: #e14478 !important;
+    color: #e14478 !important;
   }
   
+  .edit-tags{
+    font-size: 1rem !important;
+  }

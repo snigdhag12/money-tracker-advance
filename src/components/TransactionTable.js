@@ -1,5 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import * as Mui from '@mui/material';
+import '../styles/TransactionForm.css';
 
 function formatDateTime(datetime) {
     const date = new Date(datetime);
@@ -57,6 +58,21 @@ const TransactionTable = ({ transactions, errorMessage, openContextMenu }) => {
           </div>
         ),
       },
+      {
+        field: 'categories',
+        headerName: 'Categories',
+        flex: 1,
+        renderCell: (params) => (
+            <div className='ReactTags__selected column-tag'>
+                    {params.row.categories.map(cat => (                       
+                        <span key={cat._id} className="ReactTags__tag tag-wrapper">
+                            {cat.text}
+                            {console.log(cat.text , params.row.name)}
+                        </span>
+                    ))}
+            </div>
+        ),
+      },
     ];
   
     const rowsData = transactions.map((transaction) => ({
@@ -65,6 +81,7 @@ const TransactionTable = ({ transactions, errorMessage, openContextMenu }) => {
       description: transaction.description,
       datetime: transaction.datetime,
       price: transaction.price,
+      categories: transaction.categories,
     }));
 
     return (
