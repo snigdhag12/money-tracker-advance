@@ -1,28 +1,50 @@
-//notes in readme
+# MERN Money Tracker Advanced Project 🚀📊💰
 
-things to do now:
+Welcome to the advanced version of the MERN Money Tracker application! This project is a sophisticated clone of a MERN (MongoDB, Express.js, React.js, Node.js) Money Tracker app, allowing users to track their spending and earnings, view transactions, and calculate their balance in real-time.
 
-1. Make formatting better
-2. Make size of things accoring to view port
-3. Make it compatible with phone.
-4. Go through code step by step to understand what all is used and alternative
-5. SCRAM Algo
-6. See what all new features you want to add
-7. see if you can make the view more dynamic.
-8. immidiate update of balance when transactions get added
-9. giving transactions a tag(colored) -> filter on basis of Category -> category charts
-10. add that plus sign for positive transactions
-11. Error handling
-12. new space for adding Price
-13. CRUD Operations on transactions
-14. add unique key part to remove the warning
-15. Order on basis of price/datetime
-16. Accessibilty + Localisation
-17. Profiling? Security Aspect
-18. getting stuff out of Local?
-19. Scrolling/ Pagination see what to do.
-20. see to replace datetime element
+[Link to basic version](https://github.com/snigdhag12/money-tracker)
 
-To do: remove unrequired rendrings + analyse performance aspects
-Try lighthouse
-add accesilbilty / localisation aspect
+## Table of Contents
+
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Implementation Details](#implementation-details)
+  - [Add Transaction](#add-transaction)
+  - [Display Transactions](#display-transactions)
+  - [Real-time Balance Calculation](#real-time-balance-calculation)
+  - [Categorization and Filtering](#categorization-and-filtering)
+  - [Sorting and Pagination](#sorting-and-pagination)
+- [Upcoming Features](#upcoming-features)
+    - [Accessibility and Localization](#accessibility-and-localization)
+    - [Perfomance Testing](#performance-testing)
+ 
+
+## Features ✨
+
+- **Tag a Transaction**: Let users tag their transaction with labels.
+- **Add Transaction**: Users can add new transactions with details such as name, price, datetime, description, and tags.
+- **Display Transactions**: Transactions are displayed in a list format, showing name, description, price, datetime, and tags.
+- **Real-time Balance Calculation**: The application calculates and displays the current balance in real-time based on all transactions.
+- **Responsive Design**: The application is designed to be fully responsive and works well on various devices including phones.
+- **Error Handling**: Enhanced error handling for adding transactions and fetching transaction data.
+- **Categorization and Filtering**: Transactions can be tagged and filtered based on categories, with category-specific charts. (upcoming)
+- **Sorting and Pagination**: Sort transactions by name, price, or datetime and paginate large sets of transactions.
+- **CRUD Operations**: Full support for Create, Read, Update, and Delete operations on transactions.
+- **Accessibility and Localization**: Improved accessibility features and support for multiple languages. (upcoming)
+
+## Getting Started 🛠️
+
+To run this project locally, follow these steps:
+
+```bash
+git clone <repository-url>
+cd money-tracker-clone/src
+npm install
+npm start
+
+//In terminal 2
+cd money-tracker-clone/api
+node ./index.js
+```
+Access the application:
+Open your web browser and navigate to http://localhost:3000 to view the application.
