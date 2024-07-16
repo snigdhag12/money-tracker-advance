@@ -4,11 +4,15 @@ require('dotenv').config();
 const Transaction = require('./models/Transaction.js');
 const Category = require('./models/Category.js');
 const mongoose = require('mongoose');
+const userRoutes = require('./routes/user.js')
+const requireAuth = require('./middleware/requireAuth')
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/api/user', userRoutes);
+app.use(requireAuth);//middleware register after user routes
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -30,13 +34,15 @@ app.post('/api/transaction', async (req, res, next) => {
         }));
 
         const categoryIds = categoryDocs.map(category => category._id);
+        const user_id = req.user._id;
 
         const transaction = await Transaction.create({
             name,
             price,
             description,
             datetime,
-            categories: categoryIds 
+            categories: categoryIds,
+            user_id 
         });
 
         res.json(transaction);
@@ -47,8 +53,10 @@ app.post('/api/transaction', async (req, res, next) => {
 
 app.get('/api/transactions', async (req, res, next) => {
     try {
+        const user_id = req.user._id;
         await mongoose.connect(process.env.MONGO_URL);
-        const transactions = await Transaction.find().populate('categories');
+        //console.log(user_id, 'user id');
+        const transactions = await Transaction.find({user_id}).populate('categories');
         res.json(transactions);
     } catch (error) {
         next(error); 

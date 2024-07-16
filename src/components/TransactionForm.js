@@ -1,6 +1,7 @@
 import React, { useEffect , useState } from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
 import '../styles/TransactionForm.css';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const TransactionForm = ({ setErrorMessage }) => {
   const [name, setName] = useState('');
@@ -9,10 +10,17 @@ const TransactionForm = ({ setErrorMessage }) => {
   const [price, setPrice] = useState(0);
   const [categories, setCategories] = useState([]); 
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const { user } = useAuthContext();
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch(process.env.REACT_APP_API_URL + 'categories');
+      if(!user){
+        throw new Error('Invalid user: form waala func', user);
+      }
+      const response = await fetch(process.env.REACT_APP_API_URL + 'categories', {
+        headers: {
+        'Authorization': `Bearer ${user.token}`
+      }});
       if (!response.ok) {
         throw new Error('Failed to fetch categories');
       }
@@ -31,6 +39,9 @@ const TransactionForm = ({ setErrorMessage }) => {
   }, []);
 
   function addNewTransaction(ev){
+    if(!user){
+      throw new Error('Invalid user');
+    }
     console.log(selectedCategories, "catergories array");
     ev.preventDefault();
     
@@ -41,7 +52,8 @@ const TransactionForm = ({ setErrorMessage }) => {
 
     fetch(url, {
       method: 'POST',
-      headers: {'Content-type': 'application/json'},
+      headers: {'Content-type': 'application/json',
+        'Authorization': `Bearer ${user.token}`},
       body: JSON.stringify({
         name: name, 
         price,

@@ -1,18 +1,31 @@
-export async function getTransactions() {
+export async function getTransactions(user) {
+  if(!user){
+    throw new Error('Invalid user');
+  }
     const url = process.env.REACT_APP_API_URL + 'transactions';
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
+    });
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
     return await response.json();
   }
 
-export async function deleteTransaction(transaction, setSelectedTransaction, setErrorMessage, closeContextMenu) {
+export async function deleteTransaction(user, transaction, setSelectedTransaction, setErrorMessage, closeContextMenu, updateTransaction) {
+  if(!user){
+    throw new Error('Invalid user');
+  }
     const url = `${process.env.REACT_APP_API_URL}transaction/${transaction._id}`;
 
     try {
         const response = await fetch(url, {
         method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
         });
 
         if (!response.ok) {
@@ -25,15 +38,21 @@ export async function deleteTransaction(transaction, setSelectedTransaction, set
         setErrorMessage('Failed to delete transaction. Please try again later.');
     }
     closeContextMenu();
+    updateTransaction();
     setTimeout(() => {
         window.location.reload();
     }, 500);
 }
 
-export function submitEditedTransaction(updatedTransaction, setErrorMessage) {
+export function submitEditedTransaction(user, updatedTransaction, setErrorMessage) {
+  if(!user){
+    throw new Error('Invalid user');
+  }
     fetch(`${process.env.REACT_APP_API_URL}transaction/${updatedTransaction._id}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+      'Authorization': `Bearer ${user.token}`
+     },
       body: JSON.stringify(updatedTransaction)
     })
     .then(response => {
