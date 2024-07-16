@@ -22,3 +22,7 @@ things to do now:
 18. getting stuff out of Local?
 19. Scrolling/ Pagination see what to do.
 20. see to replace datetime element
+
+To do: remove unrequired rendrings + analyse performance aspects
+Try lighthouse
+add accesilbilty / localisation aspect
